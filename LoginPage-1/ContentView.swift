@@ -12,6 +12,7 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 struct ContentView: View {
     
     @State var username: String = ""
+    @State var password: String = ""
     
     var body: some View {
         VStack {
@@ -22,7 +23,19 @@ struct ContentView: View {
                 .background(lightGreyColor)
                 .cornerRadius(5.0)
                 .padding(.bottom,20)
+            SecureField("Password",text: $password)
+                .padding()
+                .background(lightGreyColor)
+                .cornerRadius(5.0)
+                .padding(.bottom,20)
+
+            Button(action: {print("Button Tapped")}){
+                LoginButtonContent()
+            }
+            
+            
         }
+        .padding(/*@START_MENU_TOKEN@*/.horizontal/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -49,5 +62,17 @@ struct UserImage: View {
             .aspectRatio(contentMode: .fill)
             .cornerRadius(150)
             .frame(width: 150.0, height: 150.0)
+    }
+}
+
+struct LoginButtonContent: View {
+    var body: some View {
+        Text("LOGIN")
+            .font(.headline)
+            .foregroundColor(.white)
+            .padding()
+            .frame(width: 220, height: 60)
+            .background(Color.black)
+            .cornerRadius(35.0)
     }
 }
